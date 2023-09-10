@@ -1,26 +1,108 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import styled from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate
+} from 'react-router-dom'
 
-function App() {
+import Resume from './Resume'
+import {
+  lightTheme,
+  darkTheme,
+  userPrefersDarkMode
+} from './resources/theme/theme'
+
+import LanguageIcon from './resources/icons/LanguageIcon'
+import DarkModeIcon from './resources/icons/DarkModeIcon'
+
+export default function App() {
+  const [darkMode, setDarkmode] = useState(userPrefersDarkMode())
+
+  const navigate = useNavigate()
+  const location = useLocation()
+  const path = location.pathname
+
+  const theme = darkMode ? darkTheme : lightTheme
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <Background />
+      <Navigation>
+        <section>
+          <button onClick={() => navigate(path === '/no' ? '/en' : '/no')}>
+            <LanguageIcon />
+          </button>
+          <button
+            onClick={() => setDarkmode((previousValue) => !previousValue)}
+          >
+            <DarkModeIcon />
+          </button>
+        </section>
+      </Navigation>
+      <Routes>
+        <Route path='/no' element={<Resume language='no' />} />
+        <Route path='/en' element={<Resume language='en' />} />
+        <Route path='*' element={<Navigate to='/no' replace />} />
+      </Routes>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+const Background = styled.div`
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background: ${(props) => props.theme.colors.background};
+`
+
+const Navigation = styled.nav`
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 3em;
+  padding: 0.6em;
+  box-shadow: 0 -8px 10px 3px;
+  background: ${(props) => props.theme.colors.background};
+
+  section {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.2em;
+
+    max-width: 900px;
+    height: 100%;
+    margin: auto;
+    padding: 0 0.7em;
+
+    button {
+      aspect-ratio: 1 / 1;
+      padding: 0.3em;
+      border: none;
+      background: none;
+
+      &:hover {
+        background: ${(props) => props.theme.colors.backgroundSecondary};
+        border-radius: 50%;
+      }
+
+      &:active {
+        background: ${(props) => props.theme.colors.text};
+
+        svg {
+          color: ${(props) => props.theme.colors.backgroundTertiary};
+        }
+      }
+
+      svg {
+        height: 100%;
+        color: ${(props) => props.theme.colors.text};
+      }
+    }
+  }
+`
