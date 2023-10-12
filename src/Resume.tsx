@@ -26,7 +26,9 @@ export default function Resume({ language }: ResumeProps) {
               <tr>
                 <td>GitHub</td>
                 <td>
-                  <a href='#'>github.com/eals01</a>
+                  <a href='https://www.github.com/eals01' target='_blank'>
+                    github.com/eals01
+                  </a>
                 </td>
               </tr>
               <tr>
@@ -277,6 +279,10 @@ const Content = styled.section`
     }
 
     .readMore {
+      position: relative;
+      left: 0;
+      transition: 0.2s;
+
       display: flex;
       align-items: center;
 
@@ -288,6 +294,16 @@ const Content = styled.section`
         height: 0.8em;
         margin-left: 0.1em;
         color: ${(props) => props.theme.colors.textSecondary};
+        transition: 0.1s;
+      }
+
+      &:hover {
+        left: 0.1em;
+        color: ${(props) => props.theme.colors.text};
+
+        svg {
+          color: ${(props) => props.theme.colors.text};
+        }
       }
     }
   }

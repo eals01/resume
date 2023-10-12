@@ -77,6 +77,13 @@ export const data: data = {
     ],
     workExperience: [
       {
+        title: 'Utvikler sommer-internship',
+        company: 'Variant',
+        date: 'jun 24 - aug 24',
+        location: 'Oslo',
+        bulletPoints: ['Får gleden av å tilbringe sommeren 2024 hos Variant!']
+      },
+      {
         title: 'Utvikler internship',
         company: 'Gjensidige',
         date: 'aug 23 - nåværende',
@@ -166,7 +173,7 @@ export const data: data = {
       {
         title: 'Online linjeforening',
         description:
-          'Jeg arrangerte sosiale sammenkomster for studenter, barn og ungdom gjennom linjeforeningen min på NTNU. Mest nevneverdig TrøndeLAN med 300 deltakere i 2021'
+          'Jeg arrangerte sosiale sammenkomster for studenter, barn og ungdom gjennom linjeforeningen min på NTNU. Mest nevneverdig TrøndeLAN med 300 deltakere i 2021. Del av ledelsen og opptakskomiteen'
       }
     ]
   },
@@ -198,6 +205,15 @@ export const data: data = {
       }
     ],
     workExperience: [
+      {
+        title: 'Developer summer intern',
+        company: 'Variant',
+        date: 'jun 24 - aug 24',
+        location: 'Oslo',
+        bulletPoints: [
+          'Having the pleasure of spending the summer of 2024 at Variant!'
+        ]
+      },
       {
         title: 'Developer intern',
         company: 'Gjensidige',
@@ -289,7 +305,7 @@ export const data: data = {
       {
         title: 'Online student association',
         description:
-          'I arranged social gatherings for students, children and youth through my volunteer position at my student association at NTNU. Most notably TrøndeLAN with 300 participants in 2021'
+          'I arranged social gatherings for students, children and youth through my volunteer position at my student association at NTNU. Most notably TrøndeLAN with 300 participants in 2021. Part of the management and admission committee'
       }
     ]
   }

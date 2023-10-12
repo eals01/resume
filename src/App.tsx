@@ -85,10 +85,17 @@ const Navigation = styled.nav`
       padding: 0.3em;
       border: none;
       background: none;
+      border-radius: 50%;
+      transition: 0.3s;
+
+      svg {
+        height: 100%;
+        color: ${(props) => props.theme.colors.text};
+        transition: 0.3s;
+      }
 
       &:hover {
         background: ${(props) => props.theme.colors.backgroundSecondary};
-        border-radius: 50%;
       }
 
       &:active {
@@ -97,11 +104,6 @@ const Navigation = styled.nav`
         svg {
           color: ${(props) => props.theme.colors.backgroundTertiary};
         }
-      }
-
-      svg {
-        height: 100%;
-        color: ${(props) => props.theme.colors.text};
       }
     }
   }

@@ -15,10 +15,14 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.1;
     font-family: Montserrat;
     font-weight: 300;
-  }
+  } 
 
   body::-webkit-scrollbar {
     display: none;
+  }
+
+  ::selection {
+    background: #51a2d5;
   }
 `
 
