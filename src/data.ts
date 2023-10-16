@@ -299,7 +299,7 @@ export const data: data = {
       {
         title: 'Hobby projects',
         description:
-          'I love web development. Most recently I have been diving into Websockets and recreated games like Monopoly and UNO',
+          'I love web development. Most recently I have been diving into Websockets (socket.IO) and WebGL (THREE.js), re-creating games like Monopoly and UNO',
         readMore: 'https://github.com/eals01/millionairy-old'
       },
       {
