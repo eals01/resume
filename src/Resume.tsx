@@ -223,6 +223,10 @@ const Content = styled.section`
     margin-bottom: 1.5em;
   }
 
+  > section {
+    margin-bottom: 0;
+  }
+
   aside {
     flex: 2 1 0;
   }
@@ -328,5 +332,13 @@ const Content = styled.section`
 
   @media (max-width: 650px) {
     flex-direction: column;
+    gap: 0.1em;
+
+    section {
+      margin-bottom: 0;
+    }
+    .skills {
+      margin-bottom: 2em;
+    }
   }
 `
