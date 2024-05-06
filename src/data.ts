@@ -1,4 +1,4 @@
-type data = {
+type Data = {
   no: {
     education: {
       title: string
@@ -47,7 +47,7 @@ type data = {
   }
 }
 
-export const data: data = {
+export const data: Data = {
   no: {
     education: [
       {
@@ -55,7 +55,10 @@ export const data: data = {
         university: 'Universitetet i Oslo',
         date: 'aug 23 - nåværende',
         location: 'Oslo',
-        bulletPoints: ['Fordypning innen programvareutvikling']
+        bulletPoints: [
+          'Fordypning innen programvareutvikling',
+          'Masteroppgave innen KI i motion capture'
+        ]
       },
       {
         title: 'Informatikk, bachelor (forts.)',
@@ -77,24 +80,24 @@ export const data: data = {
     ],
     workExperience: [
       {
-        title: 'Utvikler sommer-internship',
+        title: 'Utvikler sommerjobb',
         company: 'Variant',
         date: 'jun 24 - aug 24',
         location: 'Oslo',
         bulletPoints: ['Får gleden av å tilbringe sommeren 2024 hos Variant!']
       },
       {
-        title: 'Utvikler internship',
+        title: 'Utvikler',
         company: 'Gjensidige',
         date: 'aug 23 - nåværende',
         location: 'Oslo',
         bulletPoints: [
-          'Deltidsstilling stilling på teknologiavdelingen til Gjensidige',
+          'Deltidsstilling (20%) på teknologiavdelingen til Gjensidige',
           'Tverrfaglig prosjekt med interns fra flere avdelinger'
         ]
       },
       {
-        title: 'Utvikler sommer-internship',
+        title: 'Utvikler sommerjobb',
         company: 'Kahoot!',
         date: 'jun 23 - jul 23',
         location: 'Oslo',
@@ -104,19 +107,19 @@ export const data: data = {
         ]
       },
       {
-        title: 'Vitenskapelig assistent',
+        title: 'Utvikler',
         company: 'Universitetet i Oslo',
-        date: 'aug 23 - nåværende',
+        date: 'apr 23 - nåværende',
         location: 'Oslo',
         bulletPoints: [
-          'Deltidsstilling som utvikler på Adapt-plattformen, en e-læringsplattform som øker læringsutbytte hos medisinstudenter',
+          'Deltidsstilling (20%) som utvikler på Adapt-plattformen, en e-læringsplattform som øker læringsutbytte hos medisinstudenter',
           'React, Kotlin, AWS'
         ],
         readMore:
           'https://www.capraconsulting.no/dette-har-vi-gjort/cardiolearn'
       },
       {
-        title: 'Utvikler sommer-internship',
+        title: 'Utvikler sommerjobb',
         company: 'Komplett Group',
         date: 'jun 22 - aug 22',
         location: 'Sandefjord',
@@ -165,6 +168,11 @@ export const data: data = {
     ],
     otherExperience: [
       {
+        title: 'Masteroppgave',
+        description:
+          'Jeg skriver for tiden masteroppgave om å bruke maskinlæring innen motion capture. Målet er å forutsi fremtidige menneskelige bevegelser, og dermed skjule nettverks-forsinkelser'
+      },
+      {
         title: 'Hobbyprosjekter',
         description:
           'Jeg elsker webutvikling og fordyper meg for tiden i WebSockets (Socket.IO) og WebGL (THREE.js) for å gjenskape brettspill som Monopol og UNO',
@@ -184,7 +192,10 @@ export const data: data = {
         university: 'University of Oslo',
         date: 'aug 23 - present',
         location: 'Oslo',
-        bulletPoints: ['Specialization in software development']
+        bulletPoints: [
+          'Specialization in software development',
+          'Master thesis about machine learning in motion capture'
+        ]
       },
       {
         title: 'BSc computer science (cont.)',
@@ -215,12 +226,12 @@ export const data: data = {
         ]
       },
       {
-        title: 'Developer intern',
+        title: 'Developer',
         company: 'Gjensidige',
         date: 'aug 23 - present',
         location: 'Oslo',
         bulletPoints: [
-          'Part-time position at one of the leading insurance companies in the Nordics',
+          'Part-time position (20%) at one of the leading insurance companies in the Nordics',
           'Interdisciplinary project with interns from several departments'
         ]
       },
@@ -235,12 +246,12 @@ export const data: data = {
         ]
       },
       {
-        title: 'Scientific assistant',
+        title: 'Developer',
         company: 'University of Oslo',
-        date: 'aug 23 - present',
+        date: 'apr 23 - present',
         location: 'Oslo',
         bulletPoints: [
-          'Part-time position as a developer on the Adapt-platform, an e-learning platform that improves learning for medical students ',
+          'Part-time position (20%) as a developer on the Adapt-platform, an e-learning platform that improves learning for medical students ',
           'React, Kotlin, AWS'
         ],
         readMore:
@@ -296,6 +307,11 @@ export const data: data = {
       'AWS'
     ],
     otherExperience: [
+      {
+        title: 'Master thesis',
+        description:
+          'I am currently writing my master’s thesis about using machine learning in motion capture. I want to predict future human movements, and thereby hide network delays'
+      },
       {
         title: 'Hobby projects',
         description:

@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-
 import { data } from './data'
 import portrait from './resources/images/portrait.png'
 
-type ResumeProps = {
+type Props = {
   language: 'en' | 'no'
 }
 
-export default function Resume({ language }: ResumeProps) {
+export default function Resume({ language }: Props) {
+  const isEnglish = language === 'en'
+
   return (
     <Container>
       <header>
@@ -20,19 +21,23 @@ export default function Resume({ language }: ResumeProps) {
                 <td>+47 481 47 118</td>
               </tr>
               <tr>
-                <td>{language === 'en' ? 'Email' : 'Epost'}</td>
+                <td>{isEnglish ? 'Email' : 'Epost'}</td>
                 <td>erstoer@online.no</td>
               </tr>
               <tr>
                 <td>GitHub</td>
                 <td>
-                  <a href='https://www.github.com/eals01' target='_blank'>
+                  <a
+                    href='https://www.github.com/eals01'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     github.com/eals01
                   </a>
                 </td>
               </tr>
               <tr>
-                <td>{language === 'en' ? 'Location' : 'Bosted'}</td>
+                <td>{isEnglish ? 'Location' : 'Bosted'}</td>
                 <td>Oslo</td>
               </tr>
             </tbody>
@@ -43,7 +48,7 @@ export default function Resume({ language }: ResumeProps) {
       <Content>
         <section>
           <section>
-            <h2>{language === 'en' ? 'education' : 'utdanning'}</h2>
+            <h2>{isEnglish ? 'education' : 'utdanning'}</h2>
             <hr />
             {data[language].education.map((degree, index) => (
               <article key={`degree-${index}`}>
@@ -68,7 +73,7 @@ export default function Resume({ language }: ResumeProps) {
             ))}
           </section>
           <section>
-            <h2>{language === 'en' ? 'work experience' : 'arbeidserfaring'}</h2>
+            <h2>{isEnglish ? 'work experience' : 'arbeidserfaring'}</h2>
             <hr />
             {data[language].workExperience.map((position, index) => (
               <article key={`position-${index}`}>
@@ -100,7 +105,7 @@ export default function Resume({ language }: ResumeProps) {
                     rel='noreferrer'
                     className='readMore'
                   >
-                    {language === 'en' ? 'Read more' : 'Les mer'}
+                    {isEnglish ? 'Read more' : 'Les mer'}
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       height='1em'
@@ -119,7 +124,7 @@ export default function Resume({ language }: ResumeProps) {
         </section>
         <aside>
           <section>
-            <h2>{language === 'en' ? 'skills' : 'ferdigheter'}</h2>
+            <h2>{isEnglish ? 'skills' : 'ferdigheter'}</h2>
             <hr />
             <dl className='skills'>
               {data[language].skills.map((skill, key) => (
@@ -128,7 +133,7 @@ export default function Resume({ language }: ResumeProps) {
             </dl>
           </section>
           <section>
-            <h2>{language === 'en' ? 'other experience' : 'annen erfaring'}</h2>
+            <h2>{isEnglish ? 'other experience' : 'annen erfaring'}</h2>
             <hr />
             {data[language].otherExperience.map((experience, index) => (
               <article key={`otherExperience-${index}`}>
@@ -141,7 +146,7 @@ export default function Resume({ language }: ResumeProps) {
                     rel='noreferrer'
                     className='readMore'
                   >
-                    {language === 'en' ? 'Read more' : 'Les mer'}
+                    {isEnglish ? 'Read more' : 'Les mer'}
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       height='1em'
