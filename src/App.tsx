@@ -1,110 +1,121 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components'
-import {
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate
-} from 'react-router-dom'
+import styled from "styled-components"
+import Header from "./components/Header"
+import Skills from "./components/Skills"
+import Section from "./components/Section"
+import { data } from "./data"
+import Experiences from "./components/Experiences"
+import type { Language } from './types';
 
-import Resume from './Resume'
-import {
-  lightTheme,
-  darkTheme,
-  userPrefersDarkMode
-} from './resources/theme/theme'
+interface Props {
+  language: Language;
+}
 
-import LanguageIcon from './resources/icons/LanguageIcon'
-import DarkModeIcon from './resources/icons/DarkModeIcon'
-
-export default function App() {
-  const [darkMode, setDarkmode] = useState(userPrefersDarkMode())
-
-  const navigate = useNavigate()
-  const location = useLocation()
-  const path = location.pathname
-
-  const theme = darkMode ? darkTheme : lightTheme
+export default function App({ language }: Props) {
+  const { education, workExperience, otherExperience, skills, pitch } = data
 
   return (
-    <ThemeProvider theme={theme}>
-      <Background />
-      <Navigation>
-        <section>
-          <button onClick={() => navigate(path === '/no' ? '/en' : '/no')}>
-            <LanguageIcon />
-          </button>
-          <button
-            onClick={() => setDarkmode((previousValue) => !previousValue)}
-          >
-            <DarkModeIcon />
-          </button>
-        </section>
-      </Navigation>
-      <Routes>
-        <Route path='/no' element={<Resume language='no' />} />
-        <Route path='/en' element={<Resume language='en' />} />
-        <Route path='*' element={<Navigate to='/no' replace />} />
-      </Routes>
-    </ThemeProvider>
+    <Container>
+      <Header />
+      <Pitch>{pitch[language]}</Pitch>
+      <Body>
+        <MainColumn>
+          {[workExperience, education].map((experiences, sectionIndex) => (
+              <Section key={`section-${sectionIndex}`} title={experiences.title[language]}>
+                <Experiences experiences={experiences} language={language} />
+              </Section>
+            )
+          )}
+        </MainColumn>
+        <SideColumn>
+          <Section title={skills.title[language]}>
+            <SectionEntryDescription>
+              <Skills />
+            </SectionEntryDescription>
+          </Section>
+          <Section title={otherExperience.title[language]}>
+            <SectionEntries>
+              {otherExperience.entries.map((entry, entryIndex) => {
+                const { title, description } = entry
+
+                return (
+                  <SectionEntry key={`other-experience-${entryIndex}`}>
+                    <SectionEntryTitle>{title[language]}</SectionEntryTitle>
+                    <SectionEntryDescription>{description[language]}</SectionEntryDescription>
+                  </SectionEntry>
+                )
+              })}
+            </SectionEntries>
+          </Section>
+        </SideColumn>
+      </Body>
+    </Container>
   )
 }
 
-const Background = styled.div`
-  position: fixed;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  background: ${(props) => props.theme.colors.background};
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
+
+  width: 210mm;
+  height: 297mm;
+  padding: 12mm;
+  background: #f7f7f7;
+  box-shadow: 4px 4px 8px -3px #00000055;
 `
 
-const Navigation = styled.nav`
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  width: 100%;
-  height: 3em;
-  padding: 0.6em;
-  box-shadow: 0 -8px 10px 3px;
-  background: ${(props) => props.theme.colors.background};
+const Pitch = styled.p`
+  font-family: Work Sans;
+  font-weight: 300;
+  font-size: 14px;
+`
 
-  section {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.2em;
+const Body = styled.div`
+  display: flex;
+  gap: 8mm;
+`
 
-    max-width: 900px;
-    height: 100%;
-    margin: auto;
-    padding: 0 0.7em;
+const MainColumn = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
 
-    button {
-      aspect-ratio: 1 / 1;
-      padding: 0.3em;
-      border: none;
-      background: none;
-      border-radius: 50%;
-      transition: 0.3s;
+  flex: 3;
+`
 
-      svg {
-        height: 100%;
-        color: ${(props) => props.theme.colors.text};
-        transition: 0.3s;
-      }
+const SideColumn = styled.aside`
+  display: flex;
+  flex-direction: column;
+  gap: 6mm;
 
-      &:hover {
-        background: ${(props) => props.theme.colors.backgroundSecondary};
-      }
+  flex: 2;
+`
 
-      &:active {
-        background: ${(props) => props.theme.colors.text};
+const SectionEntries = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
-        svg {
-          color: ${(props) => props.theme.colors.backgroundTertiary};
-        }
-      }
-    }
+const SectionEntry = styled.article`
+  &:not(:last-child) {
+    padding-bottom: 2mm;
+    border-bottom: 1px dashed #dedede;
   }
+
+  &:not(:first-child) {
+    padding-top: 2mm;
+  }
+`
+
+const SectionEntryTitle = styled.h3`
+  font-family: Work Sans;
+  font-weight: 450;
+  font-size: 14px;
+  margin-bottom: 1mm;
+`
+
+const SectionEntryDescription = styled.div`
+  font-family: Work Sans;
+  font-weight: 300;
+  font-size: 14px;
 `
